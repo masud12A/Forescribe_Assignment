@@ -1,0 +1,43 @@
+Section 2: Debugging Challenge
+
+🔹 Error:
+ElementNotInteractableException: element not interactable
+at LoginPage.enterUsername(LoginPage.java)
+
+------------------------------------------------------------
+
+1️) Diagnosis (Root Cause):
+
+This error typically means Selenium located the element in the DOM, but:
+- It's not visible yet (e.g., hidden by CSS or not rendered)
+- The script attempts to interact with the element before it’s fully rendered or ready.
+- It's not ready for interaction (e.g., a modal is blocking it)
+- It's off-screen or overlapped by another element
+
+------------------------------------------------------------
+
+2️) Fixes:
+
+✅ Fix 1: Use WebDriverWait to wait until the element is clickable
+
+Example:
+WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+wait.until(ExpectedConditions.elementToBeClickable(txt_username));
+txt_username.sendKeys(username);
+
+✅ Fix 2: Scroll to the element if it is off-screen
+
+Example:
+((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", txt_username);
+txt_username.sendKeys(username);
+
+------------------------------------------------------------
+
+3️) Safer Method Implementation:
+
+public void SetUserName(String username) {
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    wait.until(ExpectedConditions.elementToBeClickable(txt_username));
+    txt_username.clear();
+    txt_username.sendKeys(username);
+}
