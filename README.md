@@ -32,7 +32,8 @@ resources/ - Config properties file
 
 reports/ - Generated HTML test reports
 
-How to Run
+How to Run:
+
 Clone the repo.
 
 Set desired browser and environment in config.properties.
