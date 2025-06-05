@@ -17,6 +17,7 @@ ExtentReports integration for detailed and visually appealing test reports.
 Debugging best practices with explicit waits to handle element interaction issues.
 
 Project Structure
+
 pageObjects/ - POM classes like LoginPage, DashboardPage, and BasePage
 
 testCases/ - TestNG test classes
@@ -40,5 +41,5 @@ Run tests via TestNG XML files (master.xml for single browser or multibrowser.xm
 
 View the generated ExtentReports in the reports folder.
 
-Debugging Approach
+Debugging Approach:
 Handled common Selenium ElementNotInteractableException by applying explicit waits and JavaScript scrolling, enhancing test stability and reliability.
